@@ -1,17 +1,28 @@
-import 'calculateAvgMarks.dart';
+import '../practical_Q2/calculateAvgMarks.dart';
 
-class Employee {
+class EmployeeData {
   int? _empId;
   String? _empName;
   String? _empDept;
   double? _empSalary;
 
   // Constructor
-  Employee(this._empId, this._empName, this._empDept) {
+  EmployeeData(this._empId, this._empName, this._empDept) {
     _empSalary = calculateSalary();
   }
 
-  
+
+  int? get empId => _empId;
+  set empId(int? value) => _empId = value;
+
+  String? get empName => _empName;
+  set empName(String? value) => _empName = value;
+
+  String? get empDept => _empDept;
+  set empDept(String? value) => _empDept = value;
+
+  double? get empSalary => _empSalary;
+
   double calculateSalary() {
     double basicSalary = 50000.0;
 
@@ -23,7 +34,6 @@ class Employee {
       'officestaff': 0.10,
     };
 
-    
     if (deptAllowances.containsKey(_empDept)) {
       double allowancePercentage = deptAllowances[_empDept]!;
       return basicSalary + (basicSalary * allowancePercentage);
@@ -32,21 +42,4 @@ class Employee {
       return 0.0;
     }
   }
-
-  // Getter methods
-  int? getEmpId() => _empId;
-  String? getEmpName() => _empName;
-  String? getEmpDept() => _empDept;
-  double? getEmpSalary() => _empSalary;
 }
-
-void main() {
-  
-  var emp1 = Employee(1, 'John Doe', 'admin');
-
-  print('Employee ID: ${emp1.getEmpId()}');
-  print('Employee Name: ${emp1.getEmpName()}');
-  print('Employee Department: ${emp1.getEmpDept()}');
-  print('Employee Salary: \$${emp1.getEmpSalary()}');
-}
-
