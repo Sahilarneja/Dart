@@ -1,3 +1,5 @@
+import 'dart:math';
+
 class BankAccount {
   String _accountHolderName;
   int _accountNumber;
@@ -6,7 +8,7 @@ class BankAccount {
 
   // Constructor with required and optional parameters
   BankAccount(this._accountHolderName, {int? accountNumber, double balance = 0.0, String accountType = 'Savings'})
-      : _accountNumber = accountNumber ?? DateTime.now().millisecondsSinceEpoch % 1000000,   //current date and time without milliseconds
+      : _accountNumber = accountNumber ?? Random().nextInt(100000),
         _balance = balance,
         _accountType = accountType;
 
@@ -24,8 +26,8 @@ class BankAccount {
   // Method to deposit money
   void deposit(double amount) {
     if (amount > 0) {
-      _balance += amount;
-      print('Deposit of \$${amount.toStringAsFixed(2)} successful.');
+      _balance = _balance+ amount;
+      print('Deposit of \$${amount.toString()} successful.');
     } else {
       print('Invalid deposit amount. Please enter a positive amount.');
     }
@@ -35,7 +37,7 @@ class BankAccount {
   void withdraw(double amount) {
     if (amount > 0 && amount <= _balance) {
       _balance -= amount;
-      print('Withdrawal of \$${amount.toStringAsFixed(2)} successful.');
+      print('Withdrawal of \$${amount.toString()} successful.');
     } else {
       print('Invalid withdrawal amount or insufficient balance.');
     }
@@ -46,6 +48,6 @@ class BankAccount {
     print('Account Holder: $_accountHolderName');
     print('Account Number: $_accountNumber');
     print('Account Type: $_accountType');
-    print('Balance: \$${_balance.toStringAsFixed(2)}');      //convert floating point to string with specific no. of digits
+    print('Balance: \$${_balance.toStringAsFixed(2)}');
   }
 }
