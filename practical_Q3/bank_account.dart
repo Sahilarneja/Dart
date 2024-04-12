@@ -6,7 +6,6 @@ class BankAccount {
   double _balance;
   String _accountType;
 
-  // Constructor with required and optional parameters
   BankAccount(this._accountHolderName, {int? accountNumber, double balance = 0.0, String accountType = 'Savings'})
       : _accountNumber = accountNumber ?? Random().nextInt(100000),
         _balance = balance,
@@ -35,7 +34,7 @@ class BankAccount {
 
   // Method to withdraw money
   void withdraw(double amount) {
-    if (amount > 0 && amount <= _balance) {
+    if (amount > 0 ) {
       _balance -= amount;
       print('Withdrawal of \$${amount.toString()} successful.');
     } else {
@@ -48,6 +47,6 @@ class BankAccount {
     print('Account Holder: $_accountHolderName');
     print('Account Number: $_accountNumber');
     print('Account Type: $_accountType');
-    print('Balance: \$${_balance.toStringAsFixed(2)}');
+    print('Balance: \$${_balance.toString()}');
   }
 }

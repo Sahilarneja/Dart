@@ -1,7 +1,7 @@
 import 'employeeSalary.dart';
 
 void main() {
-  var empData = EmployeeData(1, 'John Doe', 'admin');
+  var empData = EmployeeData(1, 'Sahil Arneja', 'admin');
 
   print('Employee ID: ${empData.empId}');
   print('Employee Name: ${empData.empName}');

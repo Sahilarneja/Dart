@@ -11,7 +11,6 @@ class EmployeeData {
     _empSalary = calculateSalary();
   }
 
-
   int? get empId => _empId;
   set empId(int? value) => _empId = value;
 
@@ -34,8 +33,9 @@ class EmployeeData {
       'officestaff': 0.10,
     };
 
-    if (deptAllowances.containsKey(_empDept)) {
-      double allowancePercentage = deptAllowances[_empDept]!;
+    double? allowancePercentage = deptAllowances[_empDept];
+
+    if (allowancePercentage != null) {
       return basicSalary + (basicSalary * allowancePercentage);
     } else {
       print('Unknown department. Salary calculation failed.');

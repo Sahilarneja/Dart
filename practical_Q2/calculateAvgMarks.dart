@@ -8,7 +8,7 @@ class Student {
 
   // Constructor with input validation and name formatting
   Student.calculateAverageMarks(this._rollNo, String inputName, this._subject1Marks, this._subject2Marks, this._subject3Marks) {
-    _name = _formatName(inputName);
+    _name = inputName;
   }
 
   int? get rollNo => _rollNo;
@@ -28,16 +28,7 @@ class Student {
   int? get subject3Marks => _subject3Marks;
   set subject3Marks(int? value) => _subject3Marks = value;
 
-  String _formatName(String inputName) {
-    List<String> nameParts = inputName.toLowerCase().split(' ');
-    List<String> formattedNameParts = [];
-
-    for (String part in nameParts) {
-      formattedNameParts.add(part[0].toUpperCase() + part.substring(1));
-    }
-
-    return formattedNameParts.join(' ');
-  }
+  
 
   // Method to calculate average marks
   String calculateAverageMarks() {
